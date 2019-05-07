@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"></bean>
+
+	<bean id="persona" class="com.ruben.beans.Persona">
+		<property name="id" value="1"></property>
+		<property name="nombre" value="Jaime"></property>
+		<property name="apodo" value="MitoCode"></property>
+		<property name="pais">
+			<bean id="pais" class="com.ruben.beans.Pais">
+				<property name="nombre" value="Peru"></property>
+				<property name="ciudades">
+					<list>
+						<bean id="ciudad1" class="com.ruben.beans.Ciudad">
+							<property name="nombre" value="Lima"></property>
+						</bean>
+						<bean id="ciudad2" class="com.ruben.beans.Ciudad">
+							<property name="nombre" value="Piura"></property>
+						</bean>
+						<bean id="ciudad3" class="com.ruben.beans.Ciudad">
+							<property name="nombre" value="Chiclayo"></property>
+						</bean>
+					</list>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="messi" class="com.ruben.beans.Jugador">
+		<property name="numero" value="10"></property>
+		<property name="nombre" value="Lionel Messi"></property>
+		<property name="equipo" ref="barcelona"></property>
+	</bean>
+	
+	<bean id="barcelona" class="com.ruben.beans.Barcelona"></bean>
+	<bean id="juventus" class="com.ruben.beans.Juventus"></bean>
+
+</beans>
